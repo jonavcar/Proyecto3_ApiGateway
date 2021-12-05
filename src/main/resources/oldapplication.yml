@@ -9,7 +9,12 @@ eureka:
 spring:
   application:
       name: api-gateway
-  cloud: 
+  cloud:
+   config:
+       name: gateway
+       discovery:
+           service-id: config
+           enabled: true
    gateway:
     discovery:
         locator:
@@ -17,7 +22,7 @@ spring:
 
     routes:
       - id: customer_microservice
-        uri: 'http://localhost:8081'
+        uri: 'http://20.94.177.83:8081'
         predicates:
           - Path=/customer/**
           - Query=src,mobile
